@@ -37,7 +37,7 @@ Der Schnellcheck ist eine Kurzfassung des **AD-Prüfberichts** (21 Prüfpunkte, 
 
 Weitere Prüfskripte (alle nur lesend, mit HTML-Bericht): Domänencontroller-Gesundheit, DNS/DHCP, Rechner-Inventar mit Support-Ende, Kerberos-Altlasten, Berechtigungen, Gruppenrichtlinien, Anmelde- und Sperrbericht, Dateiserver.
 
-➜ **[IT Admin Tools by MM auf Etsy](https://www.etsy.com/shop/ITAdminToolsbyMM)**
+➜ **[AD-Prüfbericht (Vollversion) auf Gumroad](https://mueller86.gumroad.com/l/fcneoc)** · **[alle Skripte auf Gumroad](https://mueller86.gumroad.com)** · **[IT Admin Tools by MM auf Etsy](https://www.etsy.com/shop/ITAdminToolsbyMM)**
 
 ## Hinweise
 
@@ -50,4 +50,4 @@ Weitere Prüfskripte (alle nur lesend, mit HTML-Bericht): Domänencontroller-Ges
 
 ### English
 
-Free PowerShell script that checks an Active Directory domain for 8 common weaknesses (password policy, privileged accounts, accounts without password requirement, AS-REP roasting, guest account, unsupported Windows versions) and writes an HTML report. Read-only, no changes, no data transfer. Report language is German.
+Free PowerShell script that checks an Active Directory domain for 8 common weaknesses (password policy, privileged accounts, accounts without password requirement, AS-REP roasting, guest account, unsupported Windows versions) and writes an HTML report. Read-only, no changes, no data transfer. Report language is German. Full version: https://mueller86.gumroad.com/l/fcneoc

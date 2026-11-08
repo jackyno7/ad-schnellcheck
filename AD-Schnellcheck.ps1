@@ -6,7 +6,7 @@
 
     Die Vollversion "AD-Prüfbericht" prüft 21 Punkte (u. a. Dienstkonten mit Adminrechten, Kerberoasting-Ziele,
     Kennwörter im Beschreibungsfeld, inaktive Konten, krbtgt-Alter, leere Gruppen, AD-Papierkorb):
-    https://www.etsy.com/shop/ITAdminToolsbyMM
+    https://mueller86.gumroad.com/l/fcneoc  oder  https://www.etsy.com/shop/ITAdminToolsbyMM
 
 .DESCRIPTION
     Das Skript arbeitet ausschließlich LESEND. Es ändert nichts im Active Directory, legt nichts an,
@@ -334,7 +334,7 @@ if ($ok.Count) {
     foreach ($b in $ok) { [void]$h.Append("<tr id='$($b.Id)'><td>$($b.Id)</td><td>$(Html $b.Titel)</td></tr>") }
     [void]$h.Append("</table>")
 }
-[void]$h.Append("<div class='hinweis' style='background:#eef4ff;border-left:8px solid #1f5fae;border-radius:10px;padding:14px 18px;margin:30px 0'><b>Kostenlose Kurzfassung mit 8 Prüfpunkten.</b> Die Vollversion <b>AD-Prüfbericht</b> prüft 21 Punkte, darunter Dienstkonten mit Administratorrechten, Konten für Kerberoasting, Kennwörter im Beschreibungsfeld, inaktive Konten, das Alter des krbtgt-Kennworts, leere Gruppen und den AD-Papierkorb - mit Anleitung als PDF: <a href='https://www.etsy.com/shop/ITAdminToolsbyMM'>IT Admin Tools by MM</a></div>")
+[void]$h.Append("<div class='hinweis' style='background:#eef4ff;border-left:8px solid #1f5fae;border-radius:10px;padding:14px 18px;margin:30px 0'><b>Kostenlose Kurzfassung mit 8 Prüfpunkten.</b> Die Vollversion <b>AD-Prüfbericht</b> prüft 21 Punkte, darunter Dienstkonten mit Administratorrechten, Konten für Kerberoasting, Kennwörter im Beschreibungsfeld, inaktive Konten, das Alter des krbtgt-Kennworts, leere Gruppen und den AD-Papierkorb - mit Anleitung als PDF: <a href='https://mueller86.gumroad.com/l/fcneoc'>Gumroad</a> oder <a href='https://www.etsy.com/shop/ITAdminToolsbyMM'>Etsy</a></div>")
 [void]$h.Append("<div class='fuss'>AD-Schnellcheck Version $Version · IT Admin Tools by MM · Das Skript hat ausschließlich gelesen und nichts verändert. Der Bericht zeigt Auffälligkeiten anhand fester Regeln; er ersetzt keine Sicherheitsprüfung und erhebt keinen Anspruch auf Vollständigkeit. Dieser Bericht enthält Kontonamen - bitte vertraulich behandeln.</div>")
 [void]$h.Append("</div></body></html>")
 [System.IO.File]::WriteAllText($Ausgabe, $h.ToString(), (New-Object System.Text.UTF8Encoding($true)))
