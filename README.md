@@ -31,6 +31,32 @@ Optionen: `-Csv` (CSV je Befund), `-Ausgabe C:\Berichte\ad.html`, `-MaxAdmins 5`
 
 Getestet mit Windows Server 2019, 2022 und 2025 in Testdomänen (deutsches Windows).
 
+## Die Abfragen auch von Hand
+
+Wer das Skript nicht ausführen will, kann die Kernprüfungen einzeln abfragen. Alle nur lesend und sprachunabhängig (feste Kennungen statt Gruppennamen), getestet unter Windows Server 2025 (deutsch).
+
+```powershell
+$sid = (Get-ADDomain).DomainSID.Value
+# Kennwortrichtlinie
+Get-ADDefaultDomainPasswordPolicy | Select MinPasswordLength, ComplexityEnabled, PasswordHistoryCount, LockoutThreshold
+# Domänen-Admins (RID 512), verschachtelt aufgelöst
+Get-ADGroupMember "$sid-512" -Recursive | Select SamAccountName, objectClass
+# Admins mit Kennwort, das nie abläuft
+Get-ADGroupMember "$sid-512" -Recursive | Get-ADUser -Properties PasswordNeverExpires | Where PasswordNeverExpires | Select SamAccountName
+# Benutzer, deren Kennwort nie abläuft
+Get-ADUser -Filter 'PasswordNeverExpires -eq $true -and Enabled -eq $true' | Select SamAccountName
+# Konten ohne Kennwortpflicht
+Get-ADUser -Filter 'PasswordNotRequired -eq $true -and Enabled -eq $true' | Select SamAccountName
+# Kerberos-Vorauthentifizierung aus (AS-REP-Roasting)
+Get-ADUser -Filter 'DoesNotRequirePreAuth -eq $true' | Select SamAccountName
+# Gastkonto (RID 501)
+Get-ADUser "$sid-501" -Properties Enabled | Select SamAccountName, Enabled
+# Veraltete Windows-Versionen (LTSC ausgenommen)
+Get-ADComputer -Filter 'Enabled -eq $true' -Properties OperatingSystem |
+  Where { $_.OperatingSystem -match 'Windows (7|8|10|XP|Vista)|Server 2008|Server 2012' -and $_.OperatingSystem -notmatch 'LTSC|LTSB' } |
+  Select Name, OperatingSystem
+```
+
 ## Vollversion
 
 Der Schnellcheck ist eine Kurzfassung des **AD-Prüfberichts** (21 Prüfpunkte, Anleitung als PDF). Zusätzlich geprüft werden dort u. a. Dienstkonten mit Administratorrechten, Konten mit SPN (Kerberoasting), mögliche Kennwörter im Beschreibungsfeld, deaktivierte Admin-Konten, verschachtelte Admin-Gruppen, inaktive Benutzer- und Computerkonten, das Alter des krbtgt-Kennworts, leere Gruppen und der AD-Papierkorb.
@@ -50,4 +76,12 @@ Weitere Prüfskripte (alle nur lesend, mit HTML-Bericht): Domänencontroller-Ges
 
 ### English
 
-Free PowerShell script that checks an Active Directory domain for 8 common weaknesses (password policy, privileged accounts, accounts without password requirement, AS-REP roasting, guest account, unsupported Windows versions) and writes an HTML report. Read-only, no changes, no data transfer. Report language is German. Full version: https://mueller86.gumroad.com/l/fcneoc
+Free, read-only PowerShell script that checks an Active Directory domain for 8 common weaknesses and writes an HTML report (report language: German).
+
+Checks: domain password policy (length, complexity, history, lockout), too many privileged accounts (nested groups resolved), admin accounts with non-expiring passwords, user accounts with non-expiring passwords, accounts that do not require a password (PASSWD_NOTREQD), Kerberos pre-authentication disabled (AS-REP roasting), enabled guest account, computers running unsupported Windows versions.
+
+- No changes to the directory, no data leaves the machine.
+- Requires Windows PowerShell 5.1 and the ActiveDirectory module (RSAT); a normal domain user is enough.
+- Tested on Windows Server 2019, 2022 and 2025 (German) in lab domains.
+- Run: `powershell -ExecutionPolicy Bypass -File .\AD-Schnellcheck.ps1`
+- Full version with 21 checks: https://mueller86.gumroad.com/l/fcneoc
