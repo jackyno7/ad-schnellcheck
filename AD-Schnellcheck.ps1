@@ -1,4 +1,3 @@
-#Requires -Version 5.1
 <#
 .SYNOPSIS
     AD-Schnellcheck (free short edition of the AD audit report): checks an Active Directory in 8 points
@@ -60,6 +59,7 @@
     IT Admin Tools by MM - AD-Schnellcheck Version 1.1 (11.2026), license: MIT (see LICENSE)
     Not a substitute for a security audit. Use at your own risk. / Kein Ersatz für eine Sicherheitsprüfung. Nutzung auf eigene Verantwortung.
 #>
+#Requires -Version 5.1
 [CmdletBinding()]
 param(
     [Alias('Ausgabe')][string]$Output,
