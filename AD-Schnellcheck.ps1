@@ -14,7 +14,7 @@
     Alle Skripte und Vorlagen: https://github.com/jackyno7
 
     The script is strictly READ-ONLY. It changes nothing in Active Directory, creates no objects, deletes nothing and
-    transmits no data. It writes exactly one HTML file (and CSV files on request) to the given output folder.
+    sends no data to third parties or the internet. It writes exactly one HTML file (and CSV files on request) to the given output folder.
     The report language follows the Windows display language (German or English) and can be set with -Language.
 
     Requirements: Windows PowerShell 5.1, the "ActiveDirectory" module (present on domain controllers, otherwise RSAT
