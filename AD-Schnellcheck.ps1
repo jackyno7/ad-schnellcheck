@@ -13,7 +13,7 @@
     Vollversion mit weiteren Prüfpunkten: Etsy https://www.etsy.com/listing/4588853943 oder Gumroad https://mueller86.gumroad.com/l/fcneoc
     Alle Skripte und Vorlagen: https://github.com/jackyno7
 
-    The script is strictly READ-ONLY. It changes nothing in Active Directory, creates nothing, deletes nothing and
+    The script is strictly READ-ONLY. It changes nothing in Active Directory, creates no objects, deletes nothing and
     transmits no data. It writes exactly one HTML file (and CSV files on request) to the given output folder.
     The report language follows the Windows display language (German or English) and can be set with -Language.
 
@@ -21,7 +21,7 @@
     "Active Directory Domain Services and Lightweight Directory Services Tools") and a domain account with read rights.
     Administrator rights are not required.
 
-    Deutsch: Das Skript arbeitet ausschließlich LESEND und überträgt keine Daten. Es schreibt genau eine HTML-Datei
+    Deutsch: Das Skript arbeitet ausschließlich LESEND und sendet keine Daten an Dritte oder ins Internet. Es schreibt genau eine HTML-Datei
     (auf Wunsch CSV-Dateien). Voraussetzungen: Windows PowerShell 5.1, Modul "ActiveDirectory", Domänenkonto mit Leserechten.
 
 .PARAMETER Output
