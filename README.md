@@ -1,6 +1,6 @@
 # AD-Schnellcheck – free Active Directory check with PowerShell
 
-PowerShell script that checks an Active Directory for typical weaknesses across **8 checks** and generates a clear **HTML report in German or English** (`-Language de|en`, default based on Windows language). It operates **read-only**: it changes nothing in the directory, creates nothing, and transfers no data.
+PowerShell script that checks an Active Directory for typical weaknesses across **8 checks** and generates a clear **HTML report in German or English** (`-Language de|en`, default based on Windows language). It operates **read-only**: it changes nothing in the directory, creates no objects, and sends no data to third parties or the internet.
 
 ![Sample report](Beispielbericht_en.png)
 
@@ -31,7 +31,7 @@ Options: `-Csv` (CSV per finding), `-Output C:\Berichte\ad.html` (alias: `-Ausga
 
 **Requirements:** Windows PowerShell 5.1, PowerShell module `ActiveDirectory` (present on domain controllers, otherwise RSAT), a normal domain account with read permissions. Administrator rights are not required.
 
-Tested with Windows Server 2019, 2022, and 2025 in test domains (German Windows); the English report was produced in the same lab.
+Tested with Windows Server 2025 in test domains (German Windows); the English report was produced in the same lab.
 
 ## Queries by hand
 
@@ -112,7 +112,7 @@ Templates and checklists (emergency plan, backup, password policy, onboarding, h
 
 ## Deutsch: AD-Schnellcheck – kostenloser Active-Directory-Check mit PowerShell
 
-PowerShell-Skript, das ein Active Directory in **8 Punkten** auf typische Schwachstellen prüft und einen übersichtlichen **HTML-Bericht auf Deutsch oder Englisch** (`-Language de|en`, Standard je nach Windows-Sprache) erzeugt. Es arbeitet **ausschließlich lesend**: Es ändert nichts im Verzeichnis, legt nichts an und überträgt keine Daten.
+PowerShell-Skript, das ein Active Directory in **8 Punkten** auf typische Schwachstellen prüft und einen übersichtlichen **HTML-Bericht auf Deutsch oder Englisch** (`-Language de|en`, Standard je nach Windows-Sprache) erzeugt. Es arbeitet **ausschließlich lesend**: Es ändert nichts im Verzeichnis, legt keine Objekte an und sendet keine Daten an Dritte oder ins Internet.
 
 ![Beispielbericht](Beispielbericht.png)
 
@@ -143,7 +143,7 @@ Optionen: `-Csv` (CSV je Befund), `-Output C:\Berichte\ad.html` (alt: `-Ausgabe`
 
 **Voraussetzungen:** Windows PowerShell 5.1, PowerShell-Modul `ActiveDirectory` (auf Domänencontrollern vorhanden, sonst RSAT), ein normales Domänenkonto mit Leserechten. Administratorrechte sind nicht nötig.
 
-Getestet mit Windows Server 2019, 2022 und 2025 in Testdomänen (deutsches Windows).
+Getestet mit Windows Server 2025 in Testdomänen (deutsches Windows).
 
 ## Die Abfragen auch von Hand
 
